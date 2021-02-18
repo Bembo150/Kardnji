@@ -1,4 +1,4 @@
-package com.beca.util;
+package com.kardnji.util;
 
 public class prueba {
 
