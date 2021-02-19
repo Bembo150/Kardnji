@@ -1,4 +1,4 @@
-package com.git.fran.pruebaFX;
+package com.kardnji.pruebaFX;
 
 public class SystemInfo {
 
