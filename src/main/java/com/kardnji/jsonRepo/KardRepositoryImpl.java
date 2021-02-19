@@ -9,8 +9,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kardnji.constantes.JsonPathConstants;
-import com.kardnji.entity.Kard;
-import com.kardnji.util.FileReader;
+import com.kardnji.entity.*;
+import com.kardnji.util.Reader;
 
 public class KardRepositoryImpl implements KardRepository{
 	
@@ -20,7 +20,7 @@ public class KardRepositoryImpl implements KardRepository{
 	@Override
 	public void save(Kard e) {
 
-		if(FileReader.fileReader(JsonPathConstants.kanjiFilePath).equals("")) {
+		if(Reader.fileReader(JsonPathConstants.kanjiFilePath).equals("")) {
 			System.out.println("Vacio");
 		}else {
 			kards = gson.fromJson(Reader.fileReader(JsonPathConstants.kanjiFilePath), new TypeToken<List<Kard>>(){}.getType());

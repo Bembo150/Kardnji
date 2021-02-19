@@ -1,7 +1,6 @@
 package com.kardnji.jsonRepo;
 
-import com.kardnji.entity.Kanji;
-import com.kardnji.entity.Kard;
+import com.kardnji.entity.*;
 
 public class AuxMain {
 

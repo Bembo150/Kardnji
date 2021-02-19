@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileReader {
+public class Reader {
 	
 	public static String fileReader(String nombreFichero) {
 		String json = "";
