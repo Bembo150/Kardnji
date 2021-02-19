@@ -7,6 +7,9 @@ public class Kard {
 	private String keyWord;
 	private String shortStory;
 	
+	public Kard() {
+	}
+	
 	public Kard(int id, String imageUrl, String keyWord, String shortStory) {
 		super();
 		this.id = id;
