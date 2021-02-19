@@ -6,10 +6,13 @@ import java.io.FileNotFoundException;
 import com.kardnji.constantes.Constantes;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -23,16 +26,35 @@ public class App extends Application {
 
 	public static VBox root;
 	public static Scene scene;
+	EventHandler<ActionEvent> eventNext;
+	EventHandler<ActionEvent> eventBack;
+	ImageView iview;
 	
     @Override
     public void start(Stage stage) {
     	setUp(stage);
-    	ImageView iview = setUpImg(Constantes.img_prueba);
+    	iview = setUpImg(Constantes.img_prueba);
     	Button button1 = new Button("Atras");
     	Button button2 = new Button("Siguiente");
     	root.getChildren().add(iview);
     	root.getChildren().add(button1);
     	root.getChildren().add(button2);
+    	
+    	eventNext = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				iview = setUpImg(Constantes.img_prueba1);
+			}
+    	};
+    	eventBack = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				iview = setUpImg(Constantes.img_prueba1);
+			}
+    	};
+    	
+    	button1.setOnAction(eventNext);
+    	button2.setOnAction(eventBack);
     	stage.setScene(scene);
     	stage.show();
     }
