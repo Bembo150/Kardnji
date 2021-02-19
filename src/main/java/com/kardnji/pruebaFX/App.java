@@ -26,35 +26,28 @@ public class App extends Application {
 
 	public static VBox root;
 	public static Scene scene;
-	EventHandler<ActionEvent> eventNext;
-	EventHandler<ActionEvent> eventBack;
 	ImageView iview;
 	
     @Override
     public void start(Stage stage) {
     	setUp(stage);
-    	iview = setUpImg(Constantes.img_prueba);
-    	Button button1 = new Button("Atras");
-    	Button button2 = new Button("Siguiente");
+    	iview = setUpImg(Constantes.img_prueba1);
+    	Button button1 = new Button(Constantes.btn_back);
+    	Button button2 = new Button(Constantes.btn_next);
+    	
+    	button1.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent e) {
+    			iview = setUpImg(Constantes.img_prueba1);
+    		}
+    	});
+    	button2.setOnAction(new EventHandler<ActionEvent>() {
+    		public void handle(ActionEvent e) {
+    			iview = setUpImg(Constantes.img_prueba2);
+    		}
+    	});
     	root.getChildren().add(iview);
     	root.getChildren().add(button1);
     	root.getChildren().add(button2);
-    	
-    	eventNext = new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				iview = setUpImg(Constantes.img_prueba1);
-			}
-    	};
-    	eventBack = new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				iview = setUpImg(Constantes.img_prueba1);
-			}
-    	};
-    	
-    	button1.setOnAction(eventNext);
-    	button2.setOnAction(eventBack);
     	stage.setScene(scene);
     	stage.show();
     }
@@ -71,11 +64,6 @@ public class App extends Application {
     	scene = new Scene(root,Constantes.res_height,Constantes.res_width);
     }
     
-    /**
-     * 
-     * @param img
-     * @return
-     */
     public static ImageView setUpImg(String img) {
     	FileInputStream istr;
 		try {
