@@ -52,6 +52,7 @@ public class Methods {
     	App.centerRoot.setSpacing(10);
     	App.centerRoot.setStyle("-fx-background-color: #FFFFFF");
     	
+		App.leftRoot.setAlignment(Pos.CENTER);
     	App.leftRoot.setPadding(new Insets(15,12,15,12));
     	App.leftRoot.setSpacing(10);
     	App.leftRoot.setStyle("-fx-background-color: #FFFFFF");
@@ -203,8 +204,10 @@ public class Methods {
 	    	iview.setImage(image);
 	    	iview.setX(10);
 	    	iview.setY(10);
-	    	iview.setFitHeight(215);
-	    	iview.setFitWidth(120);
+	    	//iview.setFitHeight(215);
+	    	//iview.setFitWidth(120);
+	    	iview.setFitHeight(315);
+	    	iview.setFitWidth(215);
 	    	//iview.setFitHeight(Constantes.res_height);
 	    	iview.setPreserveRatio(true);
 	    	return iview;
