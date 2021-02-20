@@ -7,6 +7,10 @@ public class Kard {
 	private String keyWord;
 	private String shortStory;
 	
+	public Kard() {
+		
+	}
+	
 	public Kard(int id, String imageUrl, String keyWord, String shortStory) {
 		super();
 		this.id = id;
@@ -46,5 +50,10 @@ public class Kard {
 	public void setShortStory(String shortStory) {
 		this.shortStory = shortStory;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Kard [id=" + id + ", imageUrl=" + imageUrl + ", keyWord=" + keyWord + ", shortStory=" + shortStory
+				+ "]";
+	}
 }
