@@ -14,7 +14,15 @@ public class Kard {
 	public Kard() {
 	}
 	
+<<<<<<< HEAD
 	public Kard(int id, String imageUrl, String keyWord, String shortStory, Lesson lesson, String asComponent) {
+=======
+	public Kard() {
+		
+	}
+	
+	public Kard(int id, String imageUrl, String keyWord, String shortStory) {
+>>>>>>> front-ObjList
 		super();
 		this.id = id;
 		this.imageUrl = imageUrl;
@@ -71,5 +79,10 @@ public class Kard {
 	public void setShortStory(String shortStory) {
 		this.shortStory = shortStory;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Kard [id=" + id + ", imageUrl=" + imageUrl + ", keyWord=" + keyWord + ", shortStory=" + shortStory
+				+ "]";
+	}
 }
