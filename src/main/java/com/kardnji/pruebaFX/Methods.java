@@ -66,16 +66,39 @@ public class Methods {
 		for (String buttonName : str) {
 			Button button = new Button(buttonName);
 			button.setPrefSize(Constantes.btn_width, Constantes.btn_height);
-			button.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
-					if (Constantes.next_kard < kards.size()) {
-						System.out.println("Cambio imagen... img actual: " + Constantes.next_kard);
-						changeMainImage(kards.get(Constantes.next_kard));
-						Constantes.next_kard++;
-					} else Constantes.next_kard = 0;
-				}
-			});
+			if (buttonName.equalsIgnoreCase(Constantes.btn_next)) {
+				button.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						if (Constantes.next_kard <= kards.size() && Constantes.next_kard >= 0) {
+							if (Constantes.next_kard == kards.size()) {
+								Constantes.next_kard = 0;
+							}
+							changeMainImage(kards.get(Constantes.next_kard));
+							Constantes.next_kard++;
+						}
+					}
+				});
+			} else {
+				button.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						System.out.println("karta_antes_if: " + Constantes.next_kard);
+						if (Constantes.next_kard <= kards.size() && Constantes.next_kard >= 0) {
+							if (Constantes.next_kard == 0) {
+								changeMainImage(kards.get(Constantes.next_kard));
+								Constantes.next_kard = kards.size()-1;
+							} else if (Constantes.next_kard == kards.size()) {
+								Constantes.next_kard = kards.size()-2;
+								changeMainImage(kards.get(Constantes.next_kard));
+							} else {
+								changeMainImage(kards.get(Constantes.next_kard));
+								Constantes.next_kard--;
+							}
+						}
+					}
+				});
+			}
 			buttons.add(button);
 		}
 		System.out.println("Botones creados... : " + buttons.size());
@@ -115,8 +138,8 @@ public class Methods {
 	    	iview.setImage(image);
 	    	iview.setX(10);
 	    	iview.setY(10);
-	    	iview.setFitHeight(400);
-	    	iview.setFitWidth(300);
+	    	iview.setFitHeight(215);
+	    	iview.setFitWidth(120);
 	    	//iview.setFitHeight(Constantes.res_height);
 	    	iview.setPreserveRatio(true);
 	    	return iview;
