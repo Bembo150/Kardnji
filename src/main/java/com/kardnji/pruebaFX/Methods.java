@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.kardnji.constantes.Constantes;
 import com.kardnji.entity.Kard;
+import com.kardnji.enums.Lesson;
+import com.kardnji.jsonRepo.KardRepositoryImpl;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,12 +29,16 @@ public class Methods {
 	public static void setUp() {
 		System.out.println("Realizando setUp...");
 		App.kards = new ArrayList<Kard>();
+		KardRepositoryImpl krepo = new KardRepositoryImpl();
+		App.kards.addAll(krepo.read(Lesson.LESSON1));
+		System.out.println("size: " + App.kards.size());
+		
 		App.topRoot = new HBox();
 		App.panel = new BorderPane();
 		
-    	App.kards.add(new Kard(1,Constantes.img_prueba1,"hola","buenas"));
-    	App.kards.add(new Kard(2,Constantes.img_prueba2,"hola","buenas"));
-    	App.kards.add(new Kard(3,Constantes.img_prueba3,"hola","buenas"));
+    	App.kards.add(new Kard());
+    	App.kards.add(new Kard());
+    	App.kards.add(new Kard());
     	App.mainImage = Methods.setUpImg(Constantes.img_prueba1);
     	
     	App.topRoot.setPadding(new Insets(15,12,15,12));

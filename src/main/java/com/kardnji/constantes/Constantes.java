@@ -1,9 +1,5 @@
 package com.kardnji.constantes;
 
-import com.kardnji.pruebaFX.Methods;
-
-import javafx.scene.image.ImageView;
-
 public class Constantes {
 	public static final String title = "Primeros Pasos";
 	public static final int res_height = 1200;
