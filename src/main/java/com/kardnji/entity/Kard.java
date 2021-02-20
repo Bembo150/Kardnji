@@ -71,5 +71,10 @@ public class Kard {
 	public void setShortStory(String shortStory) {
 		this.shortStory = shortStory;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Kard [id=" + id + ", imageUrl=" + imageUrl + ", keyWord=" + keyWord + ", shortStory=" + shortStory
+				+ "]";
+	}
 }
