@@ -1,7 +1,11 @@
 package com.kardnji.jsonRepo;
 
-import com.kardnji.entity.Kard;
+import java.util.List;
 
-public interface KardRepository extends CrudInterface<Kard, Integer>{
+import com.kardnji.entity.Kard;
+import com.kardnji.enums.Lesson;
+
+public interface KardRepository extends CrudInterface<List<Kard>, Lesson>{
+
 
 }
