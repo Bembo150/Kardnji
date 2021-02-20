@@ -30,9 +30,9 @@ public class Methods {
 		App.topRoot = new HBox();
 		App.panel = new BorderPane();
 		
-    	App.kards.add(new Kard(1,Constantes.img_prueba1,"hola","buenas"));
-    	App.kards.add(new Kard(2,Constantes.img_prueba2,"hola","buenas"));
-    	App.kards.add(new Kard(3,Constantes.img_prueba3,"hola","buenas"));
+    	App.kards.add(new Kard());
+    	App.kards.add(new Kard());
+    	App.kards.add(new Kard());
     	App.mainImage = Methods.setUpImg(Constantes.img_prueba1);
     	
     	App.topRoot.setPadding(new Insets(15,12,15,12));

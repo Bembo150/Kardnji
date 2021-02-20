@@ -1,12 +1,5 @@
 package com.kardnji.constantes;
 
-<<<<<<< HEAD
-=======
-import com.kardnji.pruebaFX.Methods;
-
-import javafx.scene.image.ImageView;
->>>>>>> front-ObjList
-
 public class Constantes {
 	public static final String title = "Primeros Pasos";
 	public static final int res_height = 1200;

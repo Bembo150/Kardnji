@@ -14,15 +14,7 @@ public class Kard {
 	public Kard() {
 	}
 	
-<<<<<<< HEAD
 	public Kard(int id, String imageUrl, String keyWord, String shortStory, Lesson lesson, String asComponent) {
-=======
-	public Kard() {
-		
-	}
-	
-	public Kard(int id, String imageUrl, String keyWord, String shortStory) {
->>>>>>> front-ObjList
 		super();
 		this.id = id;
 		this.imageUrl = imageUrl;
