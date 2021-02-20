@@ -7,6 +7,7 @@ import com.kardnji.entity.Kard;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -27,18 +28,23 @@ public class App extends Application {
 	public static HBox topRoot;
 	public static VBox leftRoot;
 	public static VBox rightRoot;
-	public static HBox centerRoot;
+	public static VBox centerRoot;
 	public static ImageView mainImage;
+	public static Label keyWord;
+	public static Label ShortHistory;
 	
     @Override
     public void start(Stage stage) {
     	Methods.setUp();
+    	
     	Methods.addToHBox(Methods.buildButtons(kards,Constantes.btn_back,Constantes.btn_next), topRoot);
-    	Methods.addToVBox(Methods.buildLabels(kards, "Nombre: ","Descripcion: "),leftRoot);
+    	Methods.addToVBox(Methods.buildLabels(kards),leftRoot);
+    	Methods.addToVBox(Methods.buildChoiceBox(kards, "Lesson1","Lesson2","Lesson3"), rightRoot);
     	
     	panel.setTop(topRoot);
     	panel.setCenter(centerRoot);
     	panel.setLeft(leftRoot);
+    	panel.setRight(rightRoot);
     	
     	stage.setScene(new Scene(panel,Constantes.res_height,Constantes.res_width));
     	stage.setTitle(Constantes.title);

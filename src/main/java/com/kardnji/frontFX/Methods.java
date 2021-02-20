@@ -10,12 +10,14 @@ import com.kardnji.entity.Kard;
 import com.kardnji.enums.Lesson;
 import com.kardnji.jsonRepo.KardRepositoryImpl;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,9 +32,11 @@ public class Methods {
 	/**
 	 * Metodo que carga las variables globales de la clase App.java y las inicializa.
 	 * Añade una Lista inicial de lecciones.
-	 * Configura las distintas partes de las que esta compuesto el programa.
-	 * 		- topRoot: los botones de arriba
+	 * Inicializar las distintas partes de las que esta compuesto el programa.
+	 * 		- topRoot: los botones de arriba para pasar entre kandnji hacia detra y adelante.
 	 * 		- centerRoot: donde esta la imagen del kanji/componente.
+	 * 		- leftRoot: donde estan los datos KeyWord y el shotStory de la kard.
+	 * 		- rightRoot: VBox donde se encuentra el ChoiceBox con el seleccionador de Lecciones.
 	 * @author fran-lopez
 	 */
 	public static void setUp() {
@@ -40,26 +44,17 @@ public class Methods {
 		KardRepositoryImpl krepo = new KardRepositoryImpl();
 		App.kards.addAll(krepo.read(Lesson.LESSON1));
 		
-		App.topRoot = new HBox();
-		App.centerRoot = new HBox();
-		App.leftRoot = new VBox();
+		App.topRoot = initializeHBox(Pos.CENTER);
+		App.centerRoot = initializeVBox(Pos.CENTER);
+		App.leftRoot = initializeVBox(Pos.CENTER);
+		App.rightRoot = initializeVBox(Pos.CENTER);
+		
 		App.panel = new BorderPane();
-    	App.mainImage = Methods.setUpImg(Constantes.img_not_found);
-    	
+		App.topRoot.setStyle("-fx-background-color: #346699;");
+		// Linea 1: Añado una imagen de primeras a la ImageView
+		// Linea 2: Añado esa imagen al VBox central
+    	App.mainImage = setUpImg(Constantes.img_not_found);
     	App.centerRoot.getChildren().add(App.mainImage);
-		App.centerRoot.setAlignment(Pos.CENTER);
-    	App.centerRoot.setPadding(new Insets(15,12,15,12));
-    	App.centerRoot.setSpacing(10);
-    	App.centerRoot.setStyle("-fx-background-color: #FFFFFF");
-    	
-		App.leftRoot.setAlignment(Pos.CENTER);
-    	App.leftRoot.setPadding(new Insets(15,12,15,12));
-    	App.leftRoot.setSpacing(10);
-    	App.leftRoot.setStyle("-fx-background-color: #FFFFFF");
-    	
-    	App.topRoot.setPadding(new Insets(15,12,15,12));
-    	App.topRoot.setSpacing(10);
-    	App.topRoot.setStyle("-fx-background-color: #336699");
 	}
 	
 	/**
@@ -85,6 +80,34 @@ public class Methods {
 	}
 	
 	/**
+	 * Inicializa de manera generica los VBox que lo necesiten
+	 * @param posicion Posicion con la que colocar el elemento en pantalla
+	 * @return devuelve el VBox inicializado.
+	 */
+	public static VBox initializeVBox(Pos posicion) {
+		VBox node = new VBox();
+		node.setAlignment(posicion);
+		node.setPadding(new Insets(15,12,15,12));
+    	node.setSpacing(10);
+    	node.setStyle("-fx-background-color: #FFFFFF");
+    	return node;
+	}
+	
+	/**
+	 * Inicializa de manera generica los HBox que lo necesiten
+	 * @param posicion Posicion con la que colocar el elemento en pantalla
+	 * @return devuelve el HBox inicializado.
+	 */
+	public static HBox initializeHBox(Pos posicion) {
+		HBox node = new HBox();
+		node.setAlignment(posicion);
+		node.setPadding(new Insets(15,12,15,12));
+    	node.setSpacing(10);
+    	node.setStyle("-fx-background-color: #FFFFFF");
+    	return node;
+	}
+	
+	/**
 	 * Metodo que recibe una serie de parametros para crear de forma dinamica botones con evento.
 	 * Los eventos por ahora solo cambian la imagen a la siguiente en la lista
 	 * @param kards Lista de obj Kard 
@@ -103,6 +126,7 @@ public class Methods {
 					@Override
 					public void handle(ActionEvent event) {
 						nextKard(kards);
+						addToVBox(buildLabels(kards),App.leftRoot);
 					}
 				});
 			} else {
@@ -110,6 +134,7 @@ public class Methods {
 					@Override
 					public void handle(ActionEvent event) {
 						lastKard(kards);
+						addToVBox(buildLabels(kards),App.leftRoot);
 					}
 				});
 			}
@@ -125,14 +150,19 @@ public class Methods {
 	 * @return devuelve la lista con los labels creados
 	 * @author fran-lopez
 	 */
-	public static List<Label> buildLabels(List<Kard> kards,String... str) {
+	public static List<Label> buildLabels(List<Kard> kards) {
 		List<Label> labels = new ArrayList<Label>();
-		for (String nombreLabel : str) {
-			Label label = new Label(nombreLabel);
-			label.setFont(Font.font("Symbol", FontWeight.BOLD, 15));
-			labels.add(label);
-		}
+		App.keyWord = new Label("Nombre: \n" + kards.get(Constantes.next_kard).getKeyWord());
+		App.ShortHistory = new Label("Descripcion: \n" + kards.get(Constantes.next_kard).getShortStory());
+		App.keyWord.setFont(Font.font("Symbol", FontWeight.BOLD, 15));
+		App.ShortHistory.setFont(Font.font("Symbol", FontWeight.BOLD, 15));
 		return labels;
+	}
+
+	public static List<ChoiceBox> buildChoiceBox(List<Kard> kards,String... str) {
+		List<ChoiceBox> choice = new ArrayList();
+		ChoiceBox cb = new ChoiceBox(FXCollections.observableArrayList(str));
+		return choice;
 	}
 	
 	/**
@@ -166,7 +196,6 @@ public class Methods {
 				changeMainImage(kards.get(Constantes.next_kard));
 			} else {
 				changeMainImage(kards.get(Constantes.next_kard));
-				Constantes.next_kard--;
 			}
 		}
 	}
