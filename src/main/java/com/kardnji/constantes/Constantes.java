@@ -15,5 +15,5 @@ public class Constantes {
 	public static final String btn_back = "Atras";
 	public static final int btn_width = 100;
 	public static final int btn_height = 20;
-	public static int next_kard = 0;
+	public static int next_kard = 1;
 }
