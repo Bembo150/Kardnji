@@ -19,8 +19,104 @@
     "id": 3,
     "imageUrl": "src/main/resources/kanjiImage/lesson1/3.png",
     "keyWord": "Tres",
-    "shortStory": "El kanji de tres simplemente triplica un único trazo horizontal",
+    "shortStory": "El kanji de tres simplemente triplica un único trazo horizontal.",
     "asComponent": " ",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 4,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/4.png",
+    "keyWord": "Cuatro",
+    "shortStory": "Supondremos que ya conocías de antes los números del 1 al 10, por lo que aplazaremos el cuento de este carácter hasta más adelante.",
+    "asComponent": "Boca y Piernas",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 5,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/5.png",
+    "keyWord": "Cinco",
+    "shortStory": "Al igual que hemos hecho en el caso de cuatro, vamos a dejar para más adelante el estudio de los componentes de este carácter.",
+    "asComponent": " ",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 6,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/6.png",
+    "keyWord": "Seis",
+    "shortStory": "Al igual que hemos hecho anteriormente, de momento vamos a prescindir de una explicación.",
+    "asComponent": "Chistera y Patas",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 7,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/7.png",
+    "keyWord": "Siete",
+    "shortStory": "Observa que el primer trazo atraviesa limpiamente al segundo. Esta característica nos permitirá diferenciar el kanji siete del kanji que significa cuchara.",
+    "asComponent": "Cortar en dados",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 8,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/8.png",
+    "keyWord": "Ocho",
+    "shortStory": "Igual que el numeral arábigo “8” está formado por un pequeño círculo sobre otro círculo ligeramente mayor, el kanji de ocho está formado por una línea corta seguida por otra línea un poco más larga, inclinada hacia la primera pero sin llegar a tocarla.",
+    "asComponent": " ",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 9,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/9.png",
+    "keyWord": "Nueve",
+    "shortStory": "Si haces un pequeño esfuerzo para recordar el orden de trazos de este kanji, no tendrás dificultades posteriormente para distinguirlo del kanji de fuerza.",
+    "asComponent": "Beisbol (Ya que hay 9 miembros)",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 10,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/10.png",
+    "keyWord": "Diez",
+    "shortStory": "Si volteas este carácter en cualquier dirección obtendrás la x que se utiliza para indicar diez en los números romanos",
+    "asComponent": "Diez y Aguja",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 11,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/11.png",
+    "keyWord": "Boca",
+    "shortStory": "El kanji de boca es claramente un pictograma. En la escritura de los kanji no existe la forma circular, por lo que utilizaremos un cuadrado para indicar el círculo.",
+    "asComponent": "Abertura o entrada a una cueva, la boca de un arma, de un río, así como la mismísima boca que tenemos en la cara.",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 12,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/12.png",
+    "keyWord": "Día",
+    "shortStory": "Este carácter pretende ser el pictograma de un sol. Si recordamos lo que hemos comentado antes acerca de las formas redondeadas, no nos será muy difícil visualizar el círculo y la gran sonrisa que caracteriza a los dibujos más simples que hacemos del sol.",
+    "asComponent": "Sol, día y lengua que se agita dentro de la boca.",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 13,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/13.png",
+    "keyWord": "Mes",
+    "shortStory": "Este carácter es en realidad un dibujo de la luna. Las dos líneas horizontales representan los ojos y la boca de la cara que solemos ver en la superficie de la luna, dibujada por los cráteres del satélite. Los ojos de la luna japonesa son tan alargados que se han unido en una sola línea, y en la línea inferior vemos la boca de esta luna con una generosa sonrisa.",
+    "asComponent": "Luna, carne o parte del cuerpo",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 14,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/14.png",
+    "keyWord": "Campo de Arroz",
+    "shortStory": "Este kanji es otro pictograma con la forma de un campo de arroz dividido en cuatro parcelas y visto desde el aire.",
+    "asComponent": "Campo de Arroz y Cerebro",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 15,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/15.png",
+    "keyWord": "Ojo",
+    "shortStory": "Una vez más, si redondeamos los ángulos y curvamos las líneas centrales hacia arriba y hacia abajo respectivamente, obtendremos algo parecido al dibujo de un ojo.",
+    "asComponent": "Ojo y Globo Ocular",
     "lesson": "LESSON1"
   }
 ]
