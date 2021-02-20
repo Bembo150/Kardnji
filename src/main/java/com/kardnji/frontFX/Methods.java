@@ -1,4 +1,4 @@
-package com.kardnji.pruebaFX;
+package com.kardnji.frontFX;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,33 +13,41 @@ import com.kardnji.jsonRepo.KardRepositoryImpl;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class Methods {
 	
 	/**
-	 * Metodo que carga las variables globales de la clase App.java
+	 * Metodo que carga las variables globales de la clase App.java y las inicializa.
+	 * Añade una Lista inicial de lecciones.
+	 * Configura las distintas partes de las que esta compuesto el programa.
+	 * 		- topRoot: los botones de arriba
+	 * 		- centerRoot: donde esta la imagen del kanji/componente.
 	 * @author fran-lopez
 	 */
 	public static void setUp() {
-		System.out.println("Realizando setUp...");
 		App.kards = new ArrayList<Kard>();
 		KardRepositoryImpl krepo = new KardRepositoryImpl();
 		App.kards.addAll(krepo.read(Lesson.LESSON1));
-		System.out.println("size: " + App.kards.size());
 		
 		App.topRoot = new HBox();
+		App.centerRoot = new HBox();
 		App.panel = new BorderPane();
-		
-    	App.kards.add(new Kard());
-    	App.kards.add(new Kard());
-    	App.kards.add(new Kard());
-    	App.mainImage = Methods.setUpImg(Constantes.img_prueba1);
+    	App.mainImage = Methods.setUpImg(Constantes.img_not_found);
+    	
+    	App.centerRoot.getChildren().add(App.mainImage);
+		App.centerRoot.setAlignment(Pos.CENTER);
+    	App.centerRoot.setPadding(new Insets(15,12,15,12));
+    	App.centerRoot.setSpacing(10);
+    	App.centerRoot.setStyle("-fx-background-color: #FFFFFF");
     	
     	App.topRoot.setPadding(new Insets(15,12,15,12));
     	App.topRoot.setSpacing(10);
@@ -54,9 +62,11 @@ public class Methods {
 	 * @author fran-lopez
 	 */
 	public static <T> void addToHBox(List<T> lista,HBox root) {
-		System.out.println("Añadir " + lista.size() + " botones a el root");
 		lista.forEach(e->App.topRoot.getChildren().add((Node) e));
-		System.out.println("Añadidos");
+	}
+	
+	public static <T> void addToVBox(List<T> lista,VBox root) {
+		lista.forEach(e->App.rightRoot.getChildren().add((Node) e));
 	}
 	
 	/**
@@ -69,6 +79,7 @@ public class Methods {
 	 */
 	public static List<Button> buildButtons(List<Kard> kards,String... str) {
 		List<Button> buttons = new ArrayList<Button>();
+		
 		for (String buttonName : str) {
 			Button button = new Button(buttonName);
 			button.setPrefSize(Constantes.btn_width, Constantes.btn_height);
@@ -76,39 +87,68 @@ public class Methods {
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						if (Constantes.next_kard <= kards.size() && Constantes.next_kard >= 0) {
-							if (Constantes.next_kard == kards.size()) {
-								Constantes.next_kard = 0;
-							}
-							changeMainImage(kards.get(Constantes.next_kard));
-							Constantes.next_kard++;
-						}
+						nextKard(kards);
 					}
 				});
 			} else {
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						System.out.println("karta_antes_if: " + Constantes.next_kard);
-						if (Constantes.next_kard <= kards.size() && Constantes.next_kard >= 0) {
-							if (Constantes.next_kard == 0) {
-								changeMainImage(kards.get(Constantes.next_kard));
-								Constantes.next_kard = kards.size()-1;
-							} else if (Constantes.next_kard == kards.size()) {
-								Constantes.next_kard = kards.size()-2;
-								changeMainImage(kards.get(Constantes.next_kard));
-							} else {
-								changeMainImage(kards.get(Constantes.next_kard));
-								Constantes.next_kard--;
-							}
-						}
+						lastKard(kards);
 					}
 				});
 			}
 			buttons.add(button);
 		}
-		System.out.println("Botones creados... : " + buttons.size());
 		return buttons;
+	}
+	
+	/**
+	 * Crea labels de manera dinamica a partir de los parametros pasados
+	 * @param kards lista con las kartas de donde sacar la informacion
+	 * @param str parametro donde recibe los String de texto que tendra cada label
+	 * @return devuelve la lista con los labels creados
+	 * @author fran-lopez
+	 */
+	public static List<Label> buildLabels(List<Kard> kards,String... str) {
+		List<Label> labels = new ArrayList<Label>();
+		return labels;
+	}
+	
+	/**
+	 * Actualiza la Kard que se esta viendo en pantalla en este momento a la siguiente en la lista de kards pasadas por parametro
+	 * @param kards lista con las kard de la leccion seleccionada
+	 * @author fran-lopez
+	 */
+	public static void nextKard(List<Kard> kards) {
+		if (Constantes.next_kard <= kards.size() && Constantes.next_kard >= 0) {
+			if (Constantes.next_kard == kards.size()) {
+				Constantes.next_kard = 0;
+			}
+			changeMainImage(kards.get(Constantes.next_kard));
+			Constantes.next_kard++;
+		}
+	}
+	
+	/**
+	 * Actualiza la kard que se esta viendo en pantalla a la anterior a esta.
+	 * @param kards lista con las kard de la leccion seleccionada.
+	 * @author fran-lopez
+	 */
+	public static void lastKard(List<Kard> kards) {
+		if (Constantes.next_kard > 0) Constantes.next_kard--;
+		if (Constantes.next_kard <= kards.size() && Constantes.next_kard >= 0) {
+			if (Constantes.next_kard == 0) {
+				changeMainImage(kards.get(Constantes.next_kard));
+				Constantes.next_kard = kards.size();
+			} else if (Constantes.next_kard == kards.size()-1) {
+				Constantes.next_kard = kards.size()-1;
+				changeMainImage(kards.get(Constantes.next_kard));
+			} else {
+				changeMainImage(kards.get(Constantes.next_kard));
+				Constantes.next_kard--;
+			}
+		}
 	}
 	
 	
