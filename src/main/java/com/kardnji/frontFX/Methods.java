@@ -22,6 +22,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class Methods {
 	
@@ -40,6 +42,7 @@ public class Methods {
 		
 		App.topRoot = new HBox();
 		App.centerRoot = new HBox();
+		App.leftRoot = new VBox();
 		App.panel = new BorderPane();
     	App.mainImage = Methods.setUpImg(Constantes.img_not_found);
     	
@@ -48,6 +51,10 @@ public class Methods {
     	App.centerRoot.setPadding(new Insets(15,12,15,12));
     	App.centerRoot.setSpacing(10);
     	App.centerRoot.setStyle("-fx-background-color: #FFFFFF");
+    	
+    	App.leftRoot.setPadding(new Insets(15,12,15,12));
+    	App.leftRoot.setSpacing(10);
+    	App.leftRoot.setStyle("-fx-background-color: #FFFFFF");
     	
     	App.topRoot.setPadding(new Insets(15,12,15,12));
     	App.topRoot.setSpacing(10);
@@ -65,8 +72,15 @@ public class Methods {
 		lista.forEach(e->App.topRoot.getChildren().add((Node) e));
 	}
 	
+	/**
+	 * Metodo que recibe una lista con nods a colocar en el VBox y los coloca dentro de este.
+	 * @param <T> Marca que es un metodo generico
+	 * @param lista nodos que va a recibir y que va a añadir al VBox.
+	 * @param root VBox recibido donde se va a añadir los nodos
+	 * @author fran-lopez
+	 */
 	public static <T> void addToVBox(List<T> lista,VBox root) {
-		lista.forEach(e->App.rightRoot.getChildren().add((Node) e));
+		lista.forEach(e->App.leftRoot.getChildren().add((Node) e));
 	}
 	
 	/**
@@ -112,6 +126,11 @@ public class Methods {
 	 */
 	public static List<Label> buildLabels(List<Kard> kards,String... str) {
 		List<Label> labels = new ArrayList<Label>();
+		for (String nombreLabel : str) {
+			Label label = new Label(nombreLabel);
+			label.setFont(Font.font("Symbol", FontWeight.BOLD, 15));
+			labels.add(label);
+		}
 		return labels;
 	}
 	

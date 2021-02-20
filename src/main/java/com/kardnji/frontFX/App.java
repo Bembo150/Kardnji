@@ -25,7 +25,7 @@ public class App extends Application {
 	public static List<Kard> kards;
 	public static BorderPane panel;
 	public static HBox topRoot;
-	public static HBox leftRoot;
+	public static VBox leftRoot;
 	public static VBox rightRoot;
 	public static HBox centerRoot;
 	public static ImageView mainImage;
@@ -34,10 +34,11 @@ public class App extends Application {
     public void start(Stage stage) {
     	Methods.setUp();
     	Methods.addToHBox(Methods.buildButtons(kards,Constantes.btn_back,Constantes.btn_next), topRoot);
-    	Methods.addToVBox(Methods.buildLabels(kards, "Nombre: ","Descripcion: "),rightRoot);
+    	Methods.addToVBox(Methods.buildLabels(kards, "Nombre: ","Descripcion: "),leftRoot);
     	
     	panel.setTop(topRoot);
     	panel.setCenter(centerRoot);
+    	panel.setLeft(leftRoot);
     	
     	stage.setScene(new Scene(panel,Constantes.res_height,Constantes.res_width));
     	stage.setTitle(Constantes.title);
@@ -52,5 +53,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-    
 }
