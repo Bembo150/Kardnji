@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/1.png",
+    "keyWord": "Uno",
+    "shortStory": "Un trazo horizontal, contrariamente al numeral romano i, que se encuentra en posición vertical.",
+    "asComponent": "Adquiere el significado de suelo o de techo según su posición",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 2,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/2.png",
+    "keyWord": "Dos",
+    "shortStory": "El kanji de dos es una simple duplicación del trazo horizontal que significa uno.",
+    "asComponent": " ",
+    "lesson": "LESSON1"
+  },
+  {
+    "id": 3,
+    "imageUrl": "src/main/resources/kanjiImage/lesson1/3.png",
+    "keyWord": "Tres",
+    "shortStory": "El kanji de tres simplemente triplica un único trazo horizontal",
+    "asComponent": " ",
+    "lesson": "LESSON1"
+  }
+]

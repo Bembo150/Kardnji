@@ -1,8 +1,0 @@
-[
-  {
-    "id": 1,
-    "imageUrl": "src/main/resources/imgprueba2.png",
-    "keyWord": "Sol",
-    "shortStory": "Parece un sol"
-  }
-]
