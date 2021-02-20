@@ -20,6 +20,10 @@ import javafx.scene.layout.HBox;
 
 public class Methods {
 	
+	/**
+	 * Metodo que carga las variables globales de la clase App.java
+	 * @author fran-lopez
+	 */
 	public static void setUp() {
 		System.out.println("Realizando setUp...");
 		App.kards = new ArrayList<Kard>();
@@ -36,12 +40,27 @@ public class Methods {
     	App.topRoot.setStyle("-fx-background-color: #336699");
 	}
 	
-	public static <T> void addToHBox(List<Button> lista,HBox root) {
+	/**
+	 * Metodo que recibe una lista con nodos a colocar en el HBox y los coloca dentro de este.
+	 * @param <T> Marca que es un metodo generico
+	 * @param lista Lista de nodos a recibir y que va a añadir al HBox.
+	 * @param root HBox recibido donde se añadiran los nodos.
+	 * @author fran-lopez
+	 */
+	public static <T> void addToHBox(List<T> lista,HBox root) {
 		System.out.println("Añadir " + lista.size() + " botones a el root");
 		lista.forEach(e->App.topRoot.getChildren().add((Node) e));
 		System.out.println("Añadidos");
 	}
 	
+	/**
+	 * Metodo que recibe una serie de parametros para crear de forma dinamica botones con evento.
+	 * Los eventos por ahora solo cambian la imagen a la siguiente en la lista
+	 * @param kards Lista de obj Kard 
+	 * @param str Nombre que se les dara a los botones
+	 * @return devuelve una lista con los botones creados
+	 * @author fran-lopez
+	 */
 	public static List<Button> buildButtons(List<Kard> kards,String... str) {
 		List<Button> buttons = new ArrayList<Button>();
 		for (String buttonName : str) {
@@ -63,6 +82,12 @@ public class Methods {
 		return buttons;
 	}
 	
+	
+	/**
+	 * Recibe un parametro con el que cambiar la imagen del panel principal del programa.
+	 * @param kard Parametro de tipo Kard de donde el metodo saca la imgURL()
+	 * @author fran-lopez
+	 */
     public static void changeMainImage(Kard kard) {
 		FileInputStream istr;
 		try {
@@ -74,6 +99,13 @@ public class Methods {
 		}
     }
 	
+    /**
+     * Metodo generico que le pasas la URL de una imagen y te la convierte a ImageView
+     * de forma automatica
+     * @param img URL de la imagen que se quiere convertir
+     * @return devuelve el ImageView de la imagen.
+     * @author fran-lopez
+     */
 	public static ImageView setUpImg(String img) {
     	FileInputStream istr;
 		try {

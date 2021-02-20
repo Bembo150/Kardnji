@@ -10,7 +10,6 @@ import com.kardnji.entity.Kard;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -22,6 +21,10 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
+	/**
+	 * Declaro variables globales
+	 * @author fran-lopez
+	 */
 	public static List<Kard> kards;
 	public static BorderPane panel;
 	public static HBox topRoot;
@@ -39,6 +42,11 @@ public class App extends Application {
     	stage.show();
     }
 
+    /**
+     * Metodo main donde se ejecutara el codigo del programa.
+     * @param args recibe parametros iniciales para la configuracion.
+     * @author fran-lopez
+     */
     public static void main(String[] args) {
         launch();
     }
